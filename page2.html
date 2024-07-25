@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page2</title>
+    <style>
+        body {
+            background-color: pink;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        .container {
+            text-align: center;
+        }
+        .container img {
+            display: block;
+            margin: 0 auto;
+        }
+        .container h1 {
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons button {
+            background-color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .buttons button:hover {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://media2.giphy.com/media/Ie4CIIvQS0bk3zwZlM/giphy.gif?cid=6c09b952pxjogph0n4is2rtlfg1jygzajveytca7v8tkfxgv&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g" alt="Centered GIF">
+        <h1>Please think again!</h1>
+        <div class="buttons">
+            <button onclick="redirectToPage('page5.html')">Yes</button>
+            <button onclick="redirectToPage('page3.html')">No</button>
+        </div>
+    </div>
+    <script>
+        function redirectToPage(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>

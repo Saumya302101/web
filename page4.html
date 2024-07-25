@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page4</title>
+    <style>
+        body {
+            background-color: pink;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            overflow: hidden; /* Prevents scrollbar from appearing when the button moves */
+        }
+        .container {
+            text-align: center;
+        }
+        .container img {
+            display: block;
+            margin: 0 auto;
+        }
+        .container h1 {
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+            height: 100px; /* Ensure enough height to contain the buttons */
+            width: 300px; /* Ensure enough width to contain the buttons */
+        }
+        .buttons button {
+            background-color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 10px;
+            position: absolute; /* Enables absolute positioning */
+            transition: top 0.2s, left 0.2s; /* Smooth transition */
+        }
+        .buttons button:hover {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://media1.giphy.com/media/YmVNzDnboB0RQEpmLr/giphy.gif?cid=6c09b952pccnisp5wn25frzaw5v3lrq0b6wvhiaxpnh70js6&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g" alt="Centered GIF">
+        <h1>Maan jao na! kitna bhav khaogi 😒</h1>
+        <div class="buttons">
+            <button id="yesButton" onclick="redirectToPage('page5.html')" style="left: 0;">Yes</button>
+            <button id="noButton" onmouseover="moveButton()" style="left: 100px;">No</button>
+        </div>
+    </div>
+    <script>
+        function redirectToPage(page) {
+            window.location.href = page;
+        }
+
+        function moveButton() {
+            const noButton = document.getElementById('noButton');
+            const yesButton = document.getElementById('yesButton');
+            const container = document.querySelector('.buttons');
+            const containerRect = container.getBoundingClientRect();
+            const buttonWidth = noButton.offsetWidth;
+            const buttonHeight = noButton.offsetHeight;
+            const yesButtonRect = yesButton.getBoundingClientRect();
+
+            let randomX, randomY, noButtonRect;
+
+            do {
+                randomX = Math.floor(Math.random() * (containerRect.width - buttonWidth));
+                randomY = Math.floor(Math.random() * (containerRect.height - buttonHeight));
+                
+                noButton.style.left = `${randomX}px`;
+                noButton.style.top = `${randomY}px`;
+                noButtonRect = noButton.getBoundingClientRect();
+            } while (isOverlapping(noButtonRect, yesButtonRect));
+        }
+
+        function isOverlapping(rect1, rect2) {
+            return !(
+                rect1.right < rect2.left ||
+                rect1.left > rect2.right ||
+                rect1.bottom < rect2.top ||
+                rect1.top > rect2.bottom
+            );
+        }
+    </script>
+</body>
+</html>
